@@ -43,7 +43,7 @@ public class SpaceshipMotor01 : MonoBehaviour
 	private const int bulletCapacity = 5;
 	private const float normalSpeed = 15f;
 	private const float shootRate = 0.5f;
-	private const float woundedSpeed = 3;
+	private const float woundedSpeed = 3f;
 
 	private int bulletsLeft = 5;
 	private float health = 100f;
