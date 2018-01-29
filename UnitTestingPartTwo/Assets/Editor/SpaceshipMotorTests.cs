@@ -26,7 +26,7 @@ public class SpaceshipMotorTests
 	private SpaceshipController GetControllerMock(IGunController gunController)
 	{
 		var motor = Substitute.For<SpaceshipController>();
-		motor.CanFire().Returns(true);
+		//motor.CanFire().Returns(true);			// causes NSubstitute exception
 		motor.SetGunController(gunController);
 		return motor;
 	}
