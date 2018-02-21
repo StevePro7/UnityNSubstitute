@@ -19,7 +19,6 @@ Therefore, I copied this DLL directly into the Plugins directory in all projects
 <br />
 Unity 2017.2.0f3 Personal
 <br />
-<br />
 Window menu | Test Runner
 <br />
 <br />
