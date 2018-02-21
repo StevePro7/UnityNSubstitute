@@ -1,16 +1,25 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class SpaceshipMotor : MonoBehaviour, IMovementController, IGunController
+public class SpaceshipMonoBehaviour : MonoBehaviour, IMovementController, IGunController
 {
-	public GameObject Bullet;
-	public GameObject GunMuzzle;
+	public GameObject BulletPrefab;
+	public GameObject GunMuzzlePrefab;
 	public SpaceshipController controller;
+
+
+	[Range(0, 100)]
+	public float health = 100f;
+	public int bulletCapacity = 5;
+	public int bulletsLeft = 5;
 
 	private void OnEnable()
 	{
 		controller.SetMovementController(this);
 		controller.SetGunController(this);
+
+		controller.SetHealth(health);
+		controller.SetBulletCapacity(bulletCapacity);
+		controller.SetBulletsLeft(bulletsLeft);
 	}
 
 	private void FixedUpdate()
@@ -29,7 +38,7 @@ public class SpaceshipMotor : MonoBehaviour, IMovementController, IGunController
 		{
 			// Left ctrl.
 			Debug.Log("Fire1");
-			controller.ApplyFire();
+			controller.ApplyFire(Time.deltaTime);
 		}
 		if (Input.GetButton("Fire2"))
 		{
@@ -55,7 +64,7 @@ public class SpaceshipMotor : MonoBehaviour, IMovementController, IGunController
 	#region IGunController implmentation.
 	public void Fire()
 	{
-		var bullet = Instantiate(Bullet, GunMuzzle.transform.position, Quaternion.identity) as GameObject;
+		var bullet = Instantiate(BulletPrefab, GunMuzzlePrefab.transform.position, Quaternion.identity) as GameObject;
 		bullet.transform.parent = this.transform.parent;
 	}
 	#endregion

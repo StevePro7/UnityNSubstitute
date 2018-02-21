@@ -9,11 +9,12 @@ public class SpaceshipMotorTests
 		// Arrange.
 		var gunController = GetGunMock();
 		var motor = GetControllerMock(gunController);
-		motor.bulletsLeft = 0;
+		motor.SetBulletsLeft(0);
 		gunController.ClearReceivedCalls();
 
 		// Act.
-		motor.ApplyFire();
+		const float time = 0.02f;
+		motor.ApplyFire(time);
 
 		// Assert.
 		gunController.DidNotReceive().Fire();
