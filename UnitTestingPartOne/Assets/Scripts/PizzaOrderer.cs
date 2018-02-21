@@ -1,4 +1,5 @@
-﻿public class PizzaOrderer
+﻿// Main class
+public class PizzaOrderer
 {
 	public PizzaOrderer(IPaymentValidator paymentValidator, IServerConnector serverConnector)
 	{
