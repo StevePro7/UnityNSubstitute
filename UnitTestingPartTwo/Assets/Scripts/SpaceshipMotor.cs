@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class SpaceshipMotor : MonoBehaviour, IMovementController, IGunController
 {
@@ -29,7 +28,7 @@ public class SpaceshipMotor : MonoBehaviour, IMovementController, IGunController
 		{
 			// Left ctrl.
 			Debug.Log("Fire1");
-			controller.ApplyFire();
+			controller.ApplyFire(Time.deltaTime);
 		}
 		if (Input.GetButton("Fire2"))
 		{

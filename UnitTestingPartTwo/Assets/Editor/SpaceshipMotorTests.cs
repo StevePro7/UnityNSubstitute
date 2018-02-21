@@ -12,8 +12,9 @@ public class SpaceshipMotorTests
 		motor.bulletsLeft = 0;
 		gunController.ClearReceivedCalls();
 
-		// Act.
-		motor.ApplyFire();
+        // Act.
+        const float time = 0.02f;
+        motor.ApplyFire(time);
 
 		// Assert.
 		gunController.DidNotReceive().Fire();

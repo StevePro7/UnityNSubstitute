@@ -1,5 +1,4 @@
 ﻿using System;
-using UnityEngine;
 
 [Serializable]
 public class SpaceshipController
@@ -9,7 +8,7 @@ public class SpaceshipController
 	public const float shootRate = 0.5f;
 	public int bulletCapacity = 5;
 
-	[Range(0, 100)]
+	//[Range(0, 100)]
 	public float health = 100f;
 	public int bulletsLeft = 5;
 
@@ -31,11 +30,11 @@ public class SpaceshipController
 		return health >= 50 ? normalSpeed : woundedSpeed;
 	}
 
-	public void ApplyFire()
-	{
-		if (bulletsLeft > 0 && CanFire())
+	public void ApplyFire(float time)
+    {
+		if (bulletsLeft > 0 && CanFire(time))
 		{
-			lastFireTime = Time.time;
+			lastFireTime = time;
 			bulletsLeft--;
 			gunController.Fire();
 		}
@@ -46,9 +45,9 @@ public class SpaceshipController
 		bulletsLeft = bulletCapacity;
 	}
 
-	public bool CanFire()
+	public bool CanFire(float time)
 	{
-		return (lastFireTime + shootRate) < Time.time;
+		return (lastFireTime + shootRate) < time;
 	}
 
 	public void SetMovementController(IMovementController movementController)
