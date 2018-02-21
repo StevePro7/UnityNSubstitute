@@ -3,18 +3,18 @@
 [Serializable]
 public class SpaceshipController
 {
-	public const float normalSpeed = 15f;
-	public const float woundedSpeed = 3f;
-	public const float shootRate = 0.5f;
-	public int bulletCapacity = 5;
-
-	//[Range(0, 100)]
-	public float health = 100f;
-	public int bulletsLeft = 5;
-
 	private IMovementController movementController;
 	private IGunController gunController;
 
+	// Injected variables from behavior
+	private float health = 100f;
+	private int bulletCapacity;
+	private int bulletsLeft = 5;
+
+
+	private const float normalSpeed = 15f;
+	private const float woundedSpeed = 3f;
+	private const float shootRate = 0.5f; 
 	private float lastFireTime = float.NegativeInfinity;
 
 	public void MoveHorizontally(float value)
@@ -57,5 +57,18 @@ public class SpaceshipController
 	public void SetGunController(IGunController gunController)
 	{
 		this.gunController = gunController;
+	}
+
+	public void SetHealth(float health)
+	{
+		this.health = health;
+	}
+	public void SetBulletCapacity(int bulletCapacity)
+	{
+		this.bulletCapacity = bulletCapacity;
+	}
+	public void SetBulletsLeft(int bulletsLeft)
+	{
+		this.bulletsLeft = bulletsLeft;
 	}
 }
